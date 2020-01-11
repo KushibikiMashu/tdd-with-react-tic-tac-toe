@@ -9,7 +9,7 @@ const Square: React.FC<Props> = ({value, onClick}) => {
   return (
     <button
       className="square"
-      onClick={() => onClick()}
+      onClick={onClick}
     >
       {value}
     </button>

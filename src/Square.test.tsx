@@ -4,7 +4,9 @@ import Square from "./Square";
 import '@testing-library/jest-dom'
 
 test('render numbers', () => {
-  // const { getByRole } = render(<Square/>)
+  // const { getByRole } = render(
+  //   <Square value='' onClick={() => {}}/>
+  //   )
   // fireEvent.click(getByRole('button'))
   // expect(getByRole('button')).toHaveTextContent('X')
 })
