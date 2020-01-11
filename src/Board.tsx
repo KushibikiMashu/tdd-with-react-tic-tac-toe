@@ -3,11 +3,13 @@ import Square from "./Square";
 
 const Board: React.FC = () => {
   const [squares, setSquares] = useState<Array<string | null>>(Array(9).fill(null))
+  const [xIsNext, setNext] = useState<boolean>(true)
 
   function handleClick(i: number) {
     const slicedSquares = squares.slice()
-    slicedSquares[i] = 'X'
+    slicedSquares[i] = xIsNext ? 'X' : 'O'
     setSquares(slicedSquares)
+    setNext(!xIsNext)
   }
 
   const renderSquare: React.FC<number> = i =>
@@ -16,7 +18,7 @@ const Board: React.FC = () => {
       onClick={() => handleClick(i)}
     />
 
-  const status = 'Next player: X';
+  const status = 'Next player: ' + (xIsNext? 'X': 'O');
 
   return (
     <div>

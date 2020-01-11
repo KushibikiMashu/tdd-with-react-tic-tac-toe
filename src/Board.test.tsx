@@ -9,9 +9,13 @@ test('render board', () => {
   expect(text).toBeInTheDocument()
 })
 
-test('Square component renders X', () => {
+test('Square component renders X and O', () => {
   const { getAllByRole } = render(<Board />)
-  const button = getAllByRole('button')[0]
-  fireEvent.click(button)
-  expect(button).toHaveTextContent('X')
+  const firstSquare = getAllByRole('button')[0]
+  fireEvent.click(firstSquare)
+  expect(firstSquare).toHaveTextContent('X')
+
+  const secondSquare = getAllByRole('button')[1]
+  fireEvent.click(secondSquare)
+  expect(secondSquare).toHaveTextContent('O')
 })
