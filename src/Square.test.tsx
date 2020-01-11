@@ -1,11 +1,10 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import Square from "./Square";
+import '@testing-library/jest-dom'
 
 test('render numbers', () => {
-  const { getByText, rerender } = render(<Square value={1}/>)
-  expect(getByText('1')).toBeInTheDocument()
-
-  rerender(<Square value={2}/>)
-  expect(getByText('2')).toBeInTheDocument()
+  // const { getByRole } = render(<Square/>)
+  // fireEvent.click(getByRole('button'))
+  // expect(getByRole('button')).toHaveTextContent('X')
 })
