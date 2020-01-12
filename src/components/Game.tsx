@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Board from './Board';
 import './Game.css';
-import { History, Squares, SquareMark } from '../types/types';
+import { History, Squares, SquareMark, Cell } from '../types/types';
 
 function calculateWinner(squares: Squares): SquareMark {
   const lines = [
@@ -12,7 +12,7 @@ function calculateWinner(squares: Squares): SquareMark {
     [1, 4, 7],
     [2, 5, 8],
     [0, 4, 8],
-    [2, 4, 6]
+    [2, 4, 6],
   ];
 
   for (let i = 0; i < lines.length; i++) {
@@ -27,11 +27,17 @@ function calculateWinner(squares: Squares): SquareMark {
 const Game: React.FC = () => {
   const [history, setHistory] = useState<History>([
     {
-      squares: Array(9).fill(null)
-    }
+      squares: Array(9).fill(null),
+    },
   ]);
   const [xIsNext, setNext] = useState<boolean>(true);
   const [stepNumber, setStepNumber] = useState<number>(0);
+  const [locations, setLocations] = useState<Cell>([
+    {
+      row: null,
+      col: null,
+    },
+  ]);
 
   const moves = history.map((step, move) => {
     const desc = move ? 'Go to move #' + move : 'Go to game start';
@@ -46,6 +52,16 @@ const Game: React.FC = () => {
     setStepNumber(step);
     setNext(step % 2 === 0);
   }
+
+  const location = locations.map((location, i) => {
+    if (location.row === null) return null;
+    return (
+      <li key={i}>
+        <span>row: {location.row}</span>
+        <span>col: {location.col}</span>
+      </li>
+    );
+  });
 
   const current = history[stepNumber];
   const currentSquares = current.squares;
@@ -69,12 +85,23 @@ const Game: React.FC = () => {
     setHistory(target.concat([{ squares }]));
     setNext(!xIsNext);
     setStepNumber(target.length);
+
+    const newLocations = locations.slice(0, stepNumber + 1);
+    setLocations(
+      newLocations.concat([
+        {
+          row: Math.floor(i / 3) + 1,
+          col: (i % 3) + 1,
+        },
+      ])
+    );
   }
 
   return (
     <div className="game">
       <div className="game-board">
         <Board squares={currentSquares} onClick={i => handleClick(i)} />
+        <ol>{location}</ol>
       </div>
       <div className="game-info">
         <div>{status}</div>

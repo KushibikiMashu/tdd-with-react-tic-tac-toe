@@ -1,9 +1,14 @@
-type X = 'X'
+type X = 'X';
 
-type O = 'O'
+type O = 'O';
 
-export type SquareMark = X | O | null
+export type SquareMark = X | O | null;
 
-export type Squares = SquareMark[]
+export type Squares = SquareMark[];
 
-export type History = { squares: Squares }[]
+export type History = { squares: Squares }[];
+
+type Row = number | null;
+type Col = number | null;
+
+export type Cell = { row: Row; col: Col }[];

@@ -102,3 +102,15 @@ test('update next player', () => {
   const player = getByText(/Next player: O/i);
   expect(player).toBeInTheDocument();
 });
+
+test('', () => {
+  const { getByText, getAllByRole } = render(<Game />);
+
+  fireEvent.click(getAllByRole('button')[8]); // X
+
+  const row = getByText(/row: 3/i);
+  expect(row).toBeInTheDocument();
+
+  const col = getByText(/col: 3/i);
+  expect(col).toBeInTheDocument();
+});
