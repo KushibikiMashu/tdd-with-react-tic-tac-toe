@@ -28,6 +28,7 @@ const Game: React.FC = () => {
   const [history, setHistory] = useState<History>([
     {
       squares: Array(9).fill(null),
+      number: 0,
     },
   ]);
   const [xIsNext, setNext] = useState<boolean>(true);
@@ -38,8 +39,11 @@ const Game: React.FC = () => {
       col: null,
     },
   ]);
+  const [asc, toggle] = useState<boolean>(true);
 
-  const moves = history.map((step, move) => {
+  const orderedHistory = asc ? history : history.slice().reverse();
+  const moves = orderedHistory.map(step => {
+    const move = step.number;
     const desc = move ? 'Go to move #' + move : 'Go to game start';
     return (
       <li key={move}>
@@ -80,18 +84,19 @@ const Game: React.FC = () => {
   }
 
   function handleClick(i: number) {
-    const target = history.slice(0, stepNumber + 1);
+    const targetNumber = stepNumber + 1;
+    const target = history.slice(0, targetNumber);
     const squares = currentSquares.slice();
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
 
     squares[i] = xIsNext ? 'X' : 'O';
-    setHistory(target.concat([{ squares }]));
+    setHistory(target.concat([{ squares, number: targetNumber }]));
     setNext(!xIsNext);
     setStepNumber(target.length);
 
-    const newLocations = locations.slice(0, stepNumber + 1);
+    const newLocations = locations.slice(0, targetNumber);
     setLocations(
       newLocations.concat([
         {
@@ -110,6 +115,7 @@ const Game: React.FC = () => {
       </div>
       <div className="game-info">
         <div>{status}</div>
+        <button onClick={() => toggle(!asc)}>toggle moves order</button>
         <ol>{moves}</ol>
       </div>
     </div>

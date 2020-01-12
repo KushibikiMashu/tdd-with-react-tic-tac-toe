@@ -6,7 +6,7 @@ export type SquareMark = X | O | null;
 
 export type Squares = SquareMark[];
 
-export type History = { squares: Squares }[];
+export type History = { squares: Squares; number: number }[];
 
 type Row = number | null;
 type Col = number | null;

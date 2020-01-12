@@ -20,11 +20,13 @@ test('render next player is O', () => {
 test('Square component renders X and O', () => {
   const { getAllByRole } = render(<Game />);
   const firstSquare = getAllByRole('button')[0];
+
   fireEvent.click(firstSquare);
   expect(firstSquare).toHaveTextContent('X');
 
   const secondSquare = getAllByRole('button')[1];
   fireEvent.click(secondSquare);
+
   expect(secondSquare).toHaveTextContent('O');
 });
 
@@ -125,4 +127,17 @@ test('make font bold at selected move', () => {
   fireEvent.click(moveOne);
 
   expect(moveOne).toHaveStyle('font-weight: bold');
+});
+
+test('change order of moves history', () => {
+  const { getByText, getAllByText, getAllByRole } = render(<Game />);
+
+  fireEvent.click(getAllByRole('button')[0]); // X
+  fireEvent.click(getAllByRole('button')[1]); // O
+
+  const toggle = getByText(/toggle moves order/i);
+  fireEvent.click(toggle);
+
+  const histories = getAllByText(/Go to/i);
+  expect(histories[2]).toHaveTextContent('Go to game start');
 });

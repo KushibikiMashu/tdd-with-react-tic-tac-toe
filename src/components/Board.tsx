@@ -9,7 +9,7 @@ type Props = {
 
 const Board: React.FC<Props> = ({ squares, onClick }) => {
   const renderSquare: React.FC<number> = i => (
-    <Square value={squares[i]} onClick={() => onClick(i)} />
+    <Square key={i} value={squares[i]} onClick={() => onClick(i)} />
   );
 
   const renderSquares = () => {
