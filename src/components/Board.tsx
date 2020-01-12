@@ -1,6 +1,6 @@
 import React from "react";
 import Square from "./Square";
-import { Squares } from './types/types'
+import { Squares } from '../types/types'
 
 type Props = {
   squares: Squares,

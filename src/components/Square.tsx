@@ -1,7 +1,8 @@
 import React from "react";
+import {SquareMark} from '../types/types'
 
 type Props = {
-  value: string | null,
+  value: SquareMark,
   onClick: () => void
 }
 

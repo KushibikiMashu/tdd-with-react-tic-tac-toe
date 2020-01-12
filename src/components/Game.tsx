@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import Board from "./Board";
 import './Game.css'
-import {History, Squares} from "./types/types";
+import {History, Squares, SquareMark} from "../types/types";
 
-function calculateWinner(squares: Squares): string | null {
+function calculateWinner(squares: Squares): SquareMark {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
