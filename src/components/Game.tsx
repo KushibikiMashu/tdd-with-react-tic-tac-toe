@@ -3,7 +3,9 @@ import Board from './Board';
 import './Game.css';
 import { History, Squares, SquareMark, Cell } from '../types/types';
 
-function calculateWinner(squares: Squares): SquareMark {
+function calculateWinner(
+  squares: Squares
+): { mark: SquareMark; lines: number[] } | null {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -18,7 +20,7 @@ function calculateWinner(squares: Squares): SquareMark {
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      return { mark: squares[a], lines: lines[i] };
     }
   }
   return null;
@@ -78,7 +80,7 @@ const Game: React.FC = () => {
 
   let status;
   if (winner) {
-    status = 'Winner: ' + winner;
+    status = 'Winner: ' + winner.mark;
   } else {
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
@@ -110,7 +112,11 @@ const Game: React.FC = () => {
   return (
     <div className="game">
       <div className="game-board">
-        <Board squares={currentSquares} onClick={i => handleClick(i)} />
+        <Board
+          squares={currentSquares}
+          onClick={i => handleClick(i)}
+          lines={winner === null ? null : winner.lines}
+        />
         <ol>{location}</ol>
       </div>
       <div className="game-info">

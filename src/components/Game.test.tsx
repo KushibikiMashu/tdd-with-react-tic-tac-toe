@@ -43,6 +43,20 @@ test('render Winner X when game ends', () => {
   expect(text).toBeInTheDocument();
 });
 
+test('highlight the three squares that caused the win', () => {
+  const { getAllByRole } = render(<Game />);
+
+  fireEvent.click(getAllByRole('button')[0]); // X
+  fireEvent.click(getAllByRole('button')[6]); // O
+  fireEvent.click(getAllByRole('button')[1]); // X
+  fireEvent.click(getAllByRole('button')[7]); // O
+  fireEvent.click(getAllByRole('button')[2]); // X
+
+  expect(getAllByRole('button')[0]).toHaveStyle('background-color: yellow');
+  expect(getAllByRole('button')[1]).toHaveStyle('background-color: yellow');
+  expect(getAllByRole('button')[2]).toHaveStyle('background-color: yellow');
+});
+
 test('to have reset button', () => {
   const { getByText } = render(<Game />);
   const reset = getByText(/Go to game start/i);
