@@ -103,7 +103,7 @@ test('update next player', () => {
   expect(player).toBeInTheDocument();
 });
 
-test('', () => {
+test('display selected cell history', () => {
   const { getByText, getAllByRole } = render(<Game />);
 
   fireEvent.click(getAllByRole('button')[8]); // X
@@ -114,3 +114,16 @@ test('', () => {
   const col = getByText(/col: 3/i);
   expect(col).toBeInTheDocument();
 });
+
+test('make font bold at selected move', () => {
+  const { getByText, getAllByRole } = render(<Game />);
+
+  fireEvent.click(getAllByRole('button')[0]); // X
+  fireEvent.click(getAllByRole('button')[1]); // O
+
+  const moveOne = getByText(/Go to move #2/i);
+  fireEvent.click(moveOne);
+
+  expect(moveOne).toHaveStyle('font-weight: bold');
+});
+
