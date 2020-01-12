@@ -1,18 +1,16 @@
-import React from "react";
-import Square from "./Square";
-import { Squares } from '../types/types'
+import React from 'react';
+import Square from './Square';
+import { Squares } from '../types/types';
 
 type Props = {
-  squares: Squares,
-  onClick: (i: number) => void
-}
+  squares: Squares;
+  onClick: (i: number) => void;
+};
 
 const Board: React.FC<Props> = ({ squares, onClick }) => {
-  const renderSquare: React.FC<number> = i =>
-    <Square
-      value={squares[i]}
-      onClick={() => onClick(i)}
-    />
+  const renderSquare: React.FC<number> = i => (
+    <Square value={squares[i]} onClick={() => onClick(i)} />
+  );
 
   return (
     <div>
@@ -33,6 +31,6 @@ const Board: React.FC<Props> = ({ squares, onClick }) => {
       </div>
     </div>
   );
-}
+};
 
-export default Board
+export default Board;
