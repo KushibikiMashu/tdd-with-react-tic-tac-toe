@@ -33,11 +33,10 @@ test('Square component renders X and O', () => {
 test('render Winner X when game ends', () => {
   const { getByText, getAllByRole } = render(<Game />);
 
-  fireEvent.click(getAllByRole('button')[0]); // X
-  fireEvent.click(getAllByRole('button')[6]); // O
-  fireEvent.click(getAllByRole('button')[1]); // X
-  fireEvent.click(getAllByRole('button')[7]); // O
-  fireEvent.click(getAllByRole('button')[2]); // X
+  const numbers = [0, 6, 1, 7, 2];
+  for (let i = 0; i < numbers.length; i++) {
+    fireEvent.click(getAllByRole('button')[numbers[i]]);
+  }
 
   const text = getByText(/Winner: X/i);
   expect(text).toBeInTheDocument();
@@ -46,15 +45,25 @@ test('render Winner X when game ends', () => {
 test('highlight the three squares that caused the win', () => {
   const { getAllByRole } = render(<Game />);
 
-  fireEvent.click(getAllByRole('button')[0]); // X
-  fireEvent.click(getAllByRole('button')[6]); // O
-  fireEvent.click(getAllByRole('button')[1]); // X
-  fireEvent.click(getAllByRole('button')[7]); // O
-  fireEvent.click(getAllByRole('button')[2]); // X
+  const numbers = [0, 6, 1, 7, 2];
+  for (let i = 0; i < numbers.length; i++) {
+    fireEvent.click(getAllByRole('button')[numbers[i]]);
+  }
 
   expect(getAllByRole('button')[0]).toHaveStyle('background-color: yellow');
   expect(getAllByRole('button')[1]).toHaveStyle('background-color: yellow');
   expect(getAllByRole('button')[2]).toHaveStyle('background-color: yellow');
+});
+
+test('display a message about the result being a draw ', () => {
+  const { getByText, getAllByRole } = render(<Game />);
+
+  const numbers = [0, 3, 1, 4, 5, 2, 7, 8, 6];
+  for (let i = 0; i < numbers.length; i++) {
+    fireEvent.click(getAllByRole('button')[numbers[i]]);
+  }
+
+  expect(getByText(/Draw game/i)).toBeInTheDocument();
 });
 
 test('to have reset button', () => {

@@ -81,6 +81,8 @@ const Game: React.FC = () => {
   let status;
   if (winner) {
     status = 'Winner: ' + winner.mark;
+  } else if (winner === null && history.length === 10) {
+    status = 'Draw game';
   } else {
     status = 'Next player: ' + (xIsNext ? 'X' : 'O');
   }
