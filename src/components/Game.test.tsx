@@ -126,4 +126,3 @@ test('make font bold at selected move', () => {
 
   expect(moveOne).toHaveStyle('font-weight: bold');
 });
-

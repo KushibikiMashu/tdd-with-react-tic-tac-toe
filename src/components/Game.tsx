@@ -43,7 +43,12 @@ const Game: React.FC = () => {
     const desc = move ? 'Go to move #' + move : 'Go to game start';
     return (
       <li key={move}>
-        <button style={move === stepNumber? {fontWeight: 'bold'} : undefined} onClick={() => jumpTo(move)}>{desc}</button>
+        <button
+          style={move === stepNumber ? { fontWeight: 'bold' } : undefined}
+          onClick={() => jumpTo(move)}
+        >
+          {desc}
+        </button>
       </li>
     );
   });
