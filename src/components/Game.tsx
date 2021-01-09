@@ -2,30 +2,8 @@ import React, { useState } from 'react';
 import Board from './Board';
 import StepList from './StepList';
 import './Game.css';
-import { History, Squares, SquareMark, Cells } from '../types';
-
-function calculateWinner(
-  squares: Squares
-): { mark: SquareMark; lines: number[] } | null {
-  const lines = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-
-  for (let i = 0; i < lines.length; i++) {
-    const [a, b, c] = lines[i];
-    if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return { mark: squares[a], lines: lines[i] };
-    }
-  }
-  return null;
-}
+import { History, SquareMark, Cells } from '../types';
+import {calculateWinner} from "./presenter";
 
 type Props = {
   currentSquares: History[number]['squares']
