@@ -6,7 +6,11 @@ export type SquareMark = X | O | null;
 
 export type Squares = SquareMark[];
 
-export type History = { squares: Squares; number: number }[];
+export type History = {
+  squares: Squares;
+  number: number;
+  location: { row: number, col: number } | null
+}[];
 
 type Row = number | null;
 

@@ -54,6 +54,7 @@ const Container: React.FC = () => {
     {
       squares: Array(9).fill(null),
       number: 0,
+      location: null
     },
   ]);
   const [xIsNext, setNext] = useState<boolean>(true);
@@ -95,7 +96,14 @@ const Container: React.FC = () => {
     }
 
     squares[i] = xIsNext ? 'X' : 'O';
-    setHistory(target.concat([{ squares, number: targetNumber }]));
+    setHistory(target.concat([{
+      squares,
+      number: targetNumber,
+      location: {
+        row: Math.floor(i / 3) + 1,
+        col: (i % 3) + 1,
+      }
+    }]));
     setNext(!xIsNext);
     setStepNumber(target.length);
 

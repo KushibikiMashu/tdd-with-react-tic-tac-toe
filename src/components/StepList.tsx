@@ -11,6 +11,7 @@ type Props = {
   steps: {
     text: string
     onClick: () => void
+    location: History[number]['location']
   }[]
 } & Pick<ContainerProps, 'currentStepNumber'>
 
@@ -24,6 +25,8 @@ const Component: React.FC<Props> = (props) => (
         >
           {step.text}
         </button>
+        {' '}
+        {step.location && step.location.row && step.location.col && <span>({step.location.row}, {step.location.col})</span>}
       </li>
     )}
   </ol>
@@ -35,7 +38,7 @@ const Container: React.FC<ContainerProps> = (props) => {
       const text = stepNumber ? `Go to move #${stepNumber}` : 'Go to game start';
       const onClick = () => props.jumpTo(stepNumber)
 
-      return {text, onClick}
+      return {text, onClick, location: step.location}
     }
   )
 
