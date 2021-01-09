@@ -25,17 +25,6 @@ const Component: React.FC<Props> = (props) => (
         onClick={i => props.onSquareClick(i)}
         lines={props.winner === null ? null : props.winner.lines}
       />
-      <ol>
-        {props.locations.map((location, i) => {
-          if (location.row === null) return null;
-          return (
-            <li key={i}>
-              <span>row: {location.row}</span>
-              <span>col: {location.col}</span>
-            </li>
-          );
-        })}
-      </ol>
     </div>
     <div className="game-info">
       <div>{props.status}</div>

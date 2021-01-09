@@ -165,10 +165,7 @@ describe('record clicked cell position', () => {
 
     fireEvent.click(getAllByRole('button')[8]); // X
 
-    const row = getByText(/row: 3/i);
-    expect(row).toBeInTheDocument();
-
-    const col = getByText(/col: 3/i);
-    expect(col).toBeInTheDocument();
+    const location = getByText(/(3, 3)/i);
+    expect(location).toBeInTheDocument();
   });
 });
