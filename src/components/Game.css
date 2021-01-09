@@ -19,7 +19,3 @@ ol, ul {
     display: flex;
     flex-direction: row;
 }
-
-.game-info {
-    margin-left: 20px;
-}

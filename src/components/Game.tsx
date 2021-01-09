@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import Board from './Board';
-import StepList from './StepList';
+import Info from './Info';
 import './Game.css';
-import {History, SquareMark, Cells} from '../types';
+import {History, SquareMark} from '../types';
 import {calculateWinner} from "./presenter";
 
 type Props = {
@@ -10,7 +10,6 @@ type Props = {
   orderedHistory: History
   onSquareClick: (i: number) => void
   winner: { mark: SquareMark; lines: number[] } | null
-  locations: Cells
   onButtonClick: () => void
   status: string
   stepNumber: number
@@ -24,15 +23,8 @@ const Component: React.FC<Props> = (props) => (
       onClick={i => props.onSquareClick(i)}
       lines={props.winner === null ? null : props.winner.lines}
     />
-    <div className="game-info">
-      <div>{props.status}</div>
-      <button onClick={props.onButtonClick}>toggle</button>
-      <StepList
-        history={props.orderedHistory}
-        jumpTo={props.jumpTo}
-        currentStepNumber={props.stepNumber}
-      />
-    </div>
+    <Info status={props.status} onClick={props.onButtonClick} history={props.orderedHistory} jumpTo={props.jumpTo}
+           currentStepNumber={props.stepNumber}/>
   </div>
 )
 
@@ -46,12 +38,8 @@ const Container: React.FC = () => {
   ]);
   const [xIsNext, setNext] = useState<boolean>(true);
   const [stepNumber, setStepNumber] = useState<number>(0);
-  const [locations, setLocations] = useState<Cells>([
-    {
-      row: null,
-      col: null,
-    },
-  ]);
+
+  // 手順の入れ替え
   const [asc, toggle] = useState<boolean>(true);
   const handleButtonClick = () => toggle(!asc)
   const orderedHistory = asc ? history : history.slice().reverse();
@@ -93,16 +81,6 @@ const Container: React.FC = () => {
     }]));
     setNext(!xIsNext);
     setStepNumber(target.length);
-
-    const newLocations = locations.slice(0, targetNumber);
-    setLocations(
-      newLocations.concat([
-        {
-          row: Math.floor(i / 3) + 1,
-          col: (i % 3) + 1,
-        },
-      ])
-    );
   }
 
   return <Component
@@ -110,7 +88,6 @@ const Container: React.FC = () => {
     winner={winner}
     orderedHistory={orderedHistory}
     onSquareClick={handleSquareClick}
-    locations={locations}
     onButtonClick={handleButtonClick}
     status={status}
     stepNumber={stepNumber}
