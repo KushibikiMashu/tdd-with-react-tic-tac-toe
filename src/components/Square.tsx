@@ -1,6 +1,8 @@
-import React from 'react';
-import {SquareMark} from '../types';
-import './Square.css'
+import React from "react";
+
+import "./Square.css";
+
+import { SquareMark } from "../types";
 
 type Props = {
   value: SquareMark;
@@ -11,7 +13,7 @@ type Props = {
 const Component: React.FC<Props> = (props) => (
   <button
     className="square"
-    style={{backgroundColor: props.isWinMark ? 'yellow' : 'white'}}
+    style={{ backgroundColor: props.isWinMark ? "yellow" : "white" }}
     onClick={props.onClick}
   >
     {props.value}

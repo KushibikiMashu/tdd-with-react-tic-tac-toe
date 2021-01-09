@@ -1,6 +1,7 @@
-import React from 'react';
-import './App.css';
-import Game from './Game';
+import React from "react";
+
+import "./App.css";
+import Game from "./Game";
 
 const Component: React.FC = () => (
   <>

@@ -1,6 +1,6 @@
-type X = 'X';
+type X = "X";
 
-type O = 'O';
+type O = "O";
 
 export type SquareMark = X | O | null;
 
@@ -9,7 +9,7 @@ export type Squares = SquareMark[];
 export type History = {
   squares: Squares;
   number: number;
-  location: { row: number, col: number } | null
+  location: { row: number; col: number } | null;
 }[];
 
 type Row = number | null;

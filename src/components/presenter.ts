@@ -1,8 +1,8 @@
-import {SquareMark, Squares} from "../types";
+import { SquareMark, Squares } from "../types";
 
-export const calculateWinner =(
+export const calculateWinner = (
   squares: Squares
-): { mark: SquareMark; lines: number[] } | null  => {
+): { mark: SquareMark; lines: number[] } | null => {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -21,5 +21,4 @@ export const calculateWinner =(
     }
   }
   return null;
-}
-
+};
