@@ -5,17 +5,17 @@ import './Square.css'
 type Props = {
   value: SquareMark;
   onClick: () => void;
-  isCompleted: boolean;
+  isWinMark: boolean;
 };
 
-const Square: React.FC<Props> = (props) => (
+const Component: React.FC<Props> = (props) => (
   <button
     className="square"
-    style={{backgroundColor: props.isCompleted ? 'yellow' : 'white'}}
+    style={{backgroundColor: props.isWinMark ? 'yellow' : 'white'}}
     onClick={props.onClick}
   >
     {props.value}
   </button>
 );
 
-export default Square;
+export default Component;
