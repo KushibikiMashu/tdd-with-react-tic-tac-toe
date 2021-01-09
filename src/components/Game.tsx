@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Board from './Board';
 import './Game.css';
-import { History, Squares, SquareMark, Cell } from '../types/types';
+import { History, Squares, SquareMark, Cell } from '../types';
 
 function calculateWinner(
   squares: Squares

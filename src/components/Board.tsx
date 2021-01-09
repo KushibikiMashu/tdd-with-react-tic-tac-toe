@@ -1,6 +1,6 @@
 import React from 'react';
 import Square from './Square';
-import { Squares } from '../types/types';
+import { Squares } from '../types';
 
 type Props = {
   squares: Squares;
@@ -14,7 +14,7 @@ const Board: React.FC<Props> = ({ squares, onClick, lines }) => {
       key={i}
       value={squares[i]}
       onClick={() => onClick(i)}
-      isComplete={lines !== null ? lines.includes(i) : false}
+      isCompleted={lines !== null ? lines.includes(i) : false}
     />
   );
 

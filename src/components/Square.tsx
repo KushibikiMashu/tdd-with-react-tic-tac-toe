@@ -1,5 +1,5 @@
 import React from 'react';
-import {SquareMark} from '../types/types';
+import {SquareMark} from '../types';
 import './Square.css'
 
 type Props = {
