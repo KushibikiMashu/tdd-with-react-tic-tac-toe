@@ -1,31 +1,29 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Board from './Board';
 import StepList from './StepList';
 import './Game.css';
-import { History, SquareMark, Cells } from '../types';
+import {History, SquareMark, Cells} from '../types';
 import {calculateWinner} from "./presenter";
 
 type Props = {
   currentSquares: History[number]['squares']
   orderedHistory: History
-  onSquareClick : (i:number) => void
+  onSquareClick: (i: number) => void
   winner: { mark: SquareMark; lines: number[] } | null
   locations: Cells
   onButtonClick: () => void
   status: string
   stepNumber: number
-  jumpTo: (i:number) => void
+  jumpTo: (i: number) => void
 }
 
 const Component: React.FC<Props> = (props) => (
   <div className="game">
-    <div className="game-board">
-      <Board
-        squares={props.currentSquares}
-        onClick={i => props.onSquareClick(i)}
-        lines={props.winner === null ? null : props.winner.lines}
-      />
-    </div>
+    <Board
+      squares={props.currentSquares}
+      onClick={i => props.onSquareClick(i)}
+      lines={props.winner === null ? null : props.winner.lines}
+    />
     <div className="game-info">
       <div>{props.status}</div>
       <button onClick={props.onButtonClick}>toggle</button>

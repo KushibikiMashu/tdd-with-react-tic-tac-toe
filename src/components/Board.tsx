@@ -1,5 +1,7 @@
 import React from 'react';
 import Square from './Square';
+import './Board.css';
+
 import {Squares} from '../types';
 
 export type ContainerProps = {
@@ -15,7 +17,7 @@ type Props = {
 } & ContainerProps
 
 const Component: React.FC<Props> = (props) => (
-  <>
+  <div>
     {props.rows.map(i => (
       <div className="board-row" key={i}>
         {props.makeCols(i).map(j =>
@@ -28,7 +30,7 @@ const Component: React.FC<Props> = (props) => (
         )}
       </div>
     ))}
-  </>
+  </div>
 )
 
 const Container: React.FC<ContainerProps> = (props) => {
