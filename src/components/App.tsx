@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import Game from './Game';
 
-const App: React.FC = () => (
+const Component: React.FC = () => (
   <>
     <h1>Tic-Tac-Toe</h1>
     <p>
@@ -15,4 +15,4 @@ const App: React.FC = () => (
   </>
 );
 
-export default App;
+export default Component;
