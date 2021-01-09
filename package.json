@@ -5,17 +5,17 @@
   "homepage": "https://kushibikimashu.github.io/tdd-with-react-tic-tac-toe/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
+    "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.25",
-    "@types/node": "^13.1.6",
-    "@types/react": "^16.9.17",
-    "@types/react-dom": "^16.9.4",
+    "@types/jest": "^24.9.1",
+    "@types/node": "^13.13.39",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
     "gh-pages": "^2.2.0",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-scripts": "3.3.0",
-    "typescript": "^3.7.4"
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-scripts": "^4.0.1",
+    "typescript": "^3.9.7"
   },
   "scripts": {
     "predeploy": "npm run build",
