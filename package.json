@@ -2,24 +2,12 @@
   "name": "react-tic-tac-toe",
   "version": "1.0.0",
   "private": true,
-  "homepage": "https://kushibikimashu.github.io/tdd-with-react-tic-tac-toe/",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.5.0",
-    "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.9.1",
-    "@types/node": "^13.13.39",
-    "@types/react": "^16.14.2",
-    "@types/react-dom": "^16.9.10",
-    "gh-pages": "^2.2.0",
-    "react": "^16.14.0",
-    "react-dom": "^16.14.0",
-    "react-scripts": "^4.0.1",
-    "typescript": "^3.9.7"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-scripts": "^4.0.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,6 +29,14 @@
     ]
   },
   "devDependencies": {
-    "prettier": "1.19.1"
+    "@testing-library/jest-dom": "^5.11.8",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.0",
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.20",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "prettier": "1.19.1",
+    "typescript": "^4.1.3"
   }
 }
