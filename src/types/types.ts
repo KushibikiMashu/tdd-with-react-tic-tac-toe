@@ -12,4 +12,4 @@ type Row = number | null;
 
 type Col = number | null;
 
-export type Cell = { row: Row; col: Col }[];
+export type Cells = { row: Row; col: Col }[];

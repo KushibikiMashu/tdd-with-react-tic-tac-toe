@@ -2,7 +2,7 @@ import React from 'react';
 import Square from './Square';
 import {Squares} from '../types';
 
-type ContainerProps = {
+export type ContainerProps = {
   squares: Squares;
   onClick: (i: number) => void;
   lines: number[] | null;
