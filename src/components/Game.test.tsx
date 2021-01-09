@@ -151,7 +151,7 @@ describe('<Game /> time travel feature', () => {
     fireEvent.click(getAllByRole('button')[0]); // X
     fireEvent.click(getAllByRole('button')[1]); // O
 
-    const toggle = getByText(/toggle moves order/i);
+    const toggle = getByText(/toggle/i);
     fireEvent.click(toggle);
 
     const histories = getAllByText(/Go to/i);

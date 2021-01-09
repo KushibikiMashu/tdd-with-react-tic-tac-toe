@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import Board, {ContainerProps as BoardProps} from './Board';
+import Board from './Board';
+import StepList from './StepList';
 import './Game.css';
 import { History, Squares, SquareMark, Cells } from '../types';
 
@@ -60,21 +61,12 @@ const Component: React.FC<Props> = (props) => (
     </div>
     <div className="game-info">
       <div>{props.status}</div>
-      <button onClick={props.onButtonClick}>toggle moves order</button>
-      <ol>{props.orderedHistory.map(step => {
-        const move = step.number;
-        const desc = move ? 'Go to move #' + move : 'Go to game start';
-        return (
-          <li key={move}>
-            <button
-              style={move === props.stepNumber ? { fontWeight: 'bold' } : undefined}
-              onClick={() => props.jumpTo(move)}
-            >
-              {desc}
-            </button>
-          </li>
-        );
-      })}</ol>
+      <button onClick={props.onButtonClick}>toggle</button>
+      <StepList
+        history={props.orderedHistory}
+        jumpTo={props.jumpTo}
+        currentStepNumber={props.stepNumber}
+      />
     </div>
   </div>
 )
